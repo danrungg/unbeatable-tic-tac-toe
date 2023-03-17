@@ -64,7 +64,20 @@ const DisplayController = (() => {
 	};
 	buttonListener("button");
 
-	return { updateGameBoard };
+	const winnerMessage = (winner) => {
+		const writeToDom = (selector) => {
+			if (winner === "Draw") {
+				document.querySelector(selector).innerText = "Its a Draw :/";
+			} else {
+				document.querySelector(
+					selector
+				).innerText = `The Winner is ${winner}`;
+			}
+		};
+		writeToDom(".message");
+	};
+
+	return { updateGameBoard, winnerMessage };
 })();
 
 const GameController = (() => {
@@ -245,10 +258,12 @@ const GameController = (() => {
 
 		if (gameLogic()) {
 			console.log("GameOver");
+			DisplayController.winnerMessage(getCurrentPlayerAssigment());
 			gameOver = true;
 		}
 
 		if (roundNumber === 9) {
+			DisplayController.winnerMessage("Draw");
 			console.log("tie");
 			gameOver = true;
 		}
