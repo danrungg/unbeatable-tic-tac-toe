@@ -55,6 +55,15 @@ const DisplayController = (() => {
 	};
 	boardListener(".grid-container");
 
+	const buttonListener = (selector) => {
+		document.querySelector(selector).addEventListener("click", () => {
+			GameBoard.resetGameBoard();
+			GameController.reset();
+			DisplayController.updateGameBoard();
+		});
+	};
+	buttonListener("button");
+
 	return { updateGameBoard };
 })();
 
@@ -247,5 +256,10 @@ const GameController = (() => {
 
 	const getGameOver = () => gameOver;
 
-	return { playRound, getGameOver };
+	const reset = () => {
+		roundNumber = 1;
+		gameOver = false;
+	};
+
+	return { playRound, getGameOver, reset };
 })();
