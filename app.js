@@ -141,7 +141,6 @@ const GameController = (() => {
 	};
 
 	const playerOneRound = (index) => {
-		console.log("one");
 		setGameBoard(index, getCurrentPlayerAssigment());
 		roundNumber += 1;
 	};
@@ -241,7 +240,6 @@ const GameController = (() => {
 	}
 
 	const playerTwoRound = () => {
-		console.log("two");
 		let bestMove = minimax(
 			getCurrentPlayerAssigment(),
 			GameBoard.getGameBoard()
@@ -257,14 +255,12 @@ const GameController = (() => {
 		DisplayController.updateGameBoard();
 
 		if (gameLogic()) {
-			console.log("GameOver");
 			DisplayController.winnerMessage(getCurrentPlayerAssigment());
 			gameOver = true;
 		}
 
 		if (roundNumber === 9) {
 			DisplayController.winnerMessage("Draw");
-			console.log("tie");
 			gameOver = true;
 		}
 	};
