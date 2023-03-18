@@ -55,15 +55,6 @@ const DisplayController = (() => {
 	};
 	boardListener(".grid-container");
 
-	const buttonListener = (selector) => {
-		document.querySelector(selector).addEventListener("click", () => {
-			GameBoard.resetGameBoard();
-			GameController.reset();
-			DisplayController.updateGameBoard();
-		});
-	};
-	buttonListener("button");
-
 	const winnerMessage = (winner) => {
 		const writeToDom = (selector) => {
 			if (winner === "Draw") {
@@ -76,6 +67,23 @@ const DisplayController = (() => {
 		};
 		writeToDom(".message");
 	};
+
+	const resetWinnerMessage = () => {
+		const writeToDOM = (selector) => {
+			document.querySelector(selector).innerHTML = "&#8205;";
+		};
+		writeToDOM(".message");
+	};
+
+	const buttonListener = (selector) => {
+		document.querySelector(selector).addEventListener("click", () => {
+			GameBoard.resetGameBoard();
+			GameController.reset();
+			DisplayController.updateGameBoard();
+			resetWinnerMessage();
+		});
+	};
+	buttonListener("button");
 
 	return { updateGameBoard, winnerMessage };
 })();
