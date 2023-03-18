@@ -4,6 +4,6 @@ The Game [Tic Tac Toe](https://www.wikihow.com/Play-Tic-Tac-Toe) created with HT
 
 <img src="./images/screenshot.png" alt="Tic Tac Toe" width="500"/>
 
-live preview 👉 https://danrungg.github.io/tic-tac-toe/
+live preview 👉 https://danrungg.github.io/unbeatable-tic-tac-toe/
 
 have fun!
